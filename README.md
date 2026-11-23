@@ -1,26 +1,23 @@
-# Project 2: Microservices
+# Simple TMF639 v4.0.1 Resource Inventory Web Connector
 
-## 📖 Overview
-[A brief description of what the application does. E.g., A microservices-based backend for a cafe management system / storage organization platform.]
+A lightweight, minimalist (black-and-white) CRUD web application and REST API built to demonstrate **TM Forum TMF639 (Resource Inventory Management v4.0.1)** communication patterns, payload structures, and lifecycle state transitions.
 
-## 🏗️ Architecture
-This project utilizes a microservices architecture to ensure scalability and separation of concerns. 
+---
 
-### Services
-*   **[Service 1 Name]** (e.g., `user-service`): Handles user authentication and management.
-*   **[Service 2 Name]** (e.g., `inventory-service`): Manages stock, items, or storage data.
-*   **[Service 3 Name]** (e.g., `order-service`): Processes transactions or organizational logic.
-*   **API Gateway**: Routes incoming requests to the appropriate microservice.
+## Architecture & Tech Stack
 
-## 🚀 Getting Started
+- **Backend API:** Python 3, FastAPI, Pydantic (strict TMF639 schema validation & RFC 7396 JSON Merge Patch)
+- **Database:** SQLite (`inventory.db` storing TMF639 JSON documents)
+- **Frontend UI:** Vanilla HTML, CSS, and JavaScript (`fetch` API + live TMF639 JSON payload inspector)
+- **API Standard:** TM Forum Open API — TMF639 Resource Inventory Management (`v4.0.1` / `v4.0.0.swagger.json`)
 
-### Prerequisites
-*   Docker & Docker Compose
-*   Java / Node.js / Python (Depending on the stack)
-*   [Database used, e.g., PostgreSQL, MongoDB]
+---
 
-### Installation & Execution
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/rawrzar-sharp/Project-2-Microservices.git](https://github.com/rawrzar-sharp/Project-2-Microservices.git)
-   cd Project-2-Microservices
+## Project Structure
+
+```text
+Simple-Inventory-web/
+├── main.py          # FastAPI backend implementing TMF639 v4 CRUD endpoints
+├── index.html       # Plain black-and-white CRUD interface & live JSON inspector
+├── seed.py          # Generates randomized TMF639-compliant dummy assets (650–950 records)
+└── inventory.db     # Local SQLite database (auto-generated when running seed.py or main.py)
