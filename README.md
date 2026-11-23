@@ -1,15 +1,15 @@
-# Simple TMF639 v4.0.1 Resource Inventory Web Connector
+# Simple Inventory Web
 
-A lightweight, minimalist (black-and-white) CRUD web application and REST API built to demonstrate **TM Forum TMF639 (Resource Inventory Management v4.0.1)** communication patterns, payload structures, and lifecycle state transitions.
+A containerized full-stack inventory management web application built with **Python**, **HTML templates**, and **Docker**. Designed to provide straightforward CRUD (Create, Read, Update, Delete) operations, persistent database storage, and an organized web interface for managing inventory records.
 
 ---
 
-## Architecture & Tech Stack
+## Tech Stack
 
-- **Backend API:** Python 3, FastAPI, Pydantic (strict TMF639 schema validation & RFC 7396 JSON Merge Patch)
-- **Database:** SQLite (`inventory.db` storing TMF639 JSON documents)
-- **Frontend UI:** Vanilla HTML, CSS, and JavaScript (`fetch` API + live TMF639 JSON payload inspector)
-- **API Standard:** TM Forum Open API — TMF639 Resource Inventory Management (`v4.0.1` / `v4.0.0.swagger.json`)
+- **Backend:** Python (REST/Web Routing & ORM Models)
+- **Frontend:** HTML Templates, CSS / Node-managed frontend dependencies (`package.json`)
+- **Database:** Relational Database configured via `database.py` & `models.py` (with local persistence in `/data`)
+- **Containerization:** Docker & Docker Compose
 
 ---
 
@@ -17,7 +17,13 @@ A lightweight, minimalist (black-and-white) CRUD web application and REST API bu
 
 ```text
 Simple-Inventory-web/
-├── main.py          # FastAPI backend implementing TMF639 v4 CRUD endpoints
-├── index.html       # Plain black-and-white CRUD interface & live JSON inspector
-├── seed.py          # Generates randomized TMF639-compliant dummy assets (650–950 records)
-└── inventory.db     # Local SQLite database (auto-generated when running seed.py or main.py)
+├── data/                   # Persistent database/storage directory
+├── templates/              # HTML views rendered by the web application
+├── database.py             # Database connection and session configuration
+├── models.py               # Database schema and inventory data models
+├── main.py                 # Application entry point, routes, and CRUD logic
+├── Dockerfile              # Container image build instructions
+├── docker-compose.yaml     # Multi-container orchestration and volume mapping
+├── requirements.txt        # Python dependencies
+├── package.json            # Frontend/Node tooling and dependencies
+└── README.md               # Project documentation
